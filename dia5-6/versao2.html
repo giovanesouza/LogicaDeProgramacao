@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ICON -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <title>Arrays e Coleções - Lista de compras </title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            text-decoration: none;
+
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            background-color: #ccc;
+            font-size: 1.6rem;
+
+        }
+
+
+        h1 {
+            background-color: #fff;
+            color: #144d4d;
+            text-align: center;
+            text-shadow: 0.2rem 0.2rem 0.5rem #fff, 0.2rem 0.2rem 0.5rem #000;
+            margin: 1% 0 1% 0;
+
+            box-shadow: 2px 2px 10px #014e4e;
+            padding: 2rem;
+
+        }
+
+
+        /* INÍCIO Área de entrada de dados */
+        .container {
+            background-color: #fff;
+            box-shadow: 0.2rem 0.2rem 0.8rem 0.2rem #014e4e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+
+        input,
+        select {
+            padding: 1rem 2rem;
+            width: 30%;
+
+            outline: none;
+            font-weight: bolder;
+            text-align: center;
+
+        }
+
+
+        input:focus,
+        select:focus {
+            color: #014e4e;
+        }
+
+        button {
+
+            width: 20%;
+            padding: 1rem;
+            border: none;
+            color: #fff;
+            font-weight: bolder;
+
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .add {
+            background-color: #0D8888;
+
+
+        }
+
+        .add:hover {
+            background-color: #014e4e;
+        }
+
+        .remove {
+            background-color: transparent;
+            color: #ff0000;
+            border: 0.1rem solid;
+
+        }
+
+        .remove:hover {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        /* FIM Área de entrada de dados */
+
+
+
+        /* TÍTULO CATEGORIAS */
+        h3 {
+            background-color: #0D8888;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        /* FIM TÍTULO CATEGORIAS */
+
+        .categoria-cereais,
+        .categoria-leguminosas,
+        .categoria-frutas,
+        .categoria-laticinios,
+        .categoria-carnes {
+
+            display: none;
+            padding: 1.2rem;
+
+        }
+
+        .displayBlock {
+            display: block;
+
+        }
+
+        ul {
+            margin: 2rem;
+        }
+
+
+
+        /* RODAPÉ */
+
+        footer {
+            background-color: #014e4e;
+            text-align: center;
+
+            margin-top: 2rem;
+            /* border-top: 0.5rem solid #0d888870; */
+            /* box-shadow: 0 -0.4rem 0.5rem 0.2rem #0D8888; */
+            box-shadow: 0 -0.4rem 0.5rem 0.2rem #0d8888a9;
+
+        }
+
+        footer p {
+            padding: 1rem;
+            color: #fff;
+
+        }
+
+
+        /* CONTATO */
+
+        section.contato {
+
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0 0 0;
+
+        }
+
+        i {
+            font-size: 2.5rem;
+        }
+
+
+        .repositorio a {
+            display: flex;
+
+            color: #fff;
+            border-radius: 50%;
+            font-weight: bold;
+            padding: 1rem;
+
+            transition: all .2s;
+        }
+
+        .linkedin a {
+            display: flex;
+
+            color: #fff;
+            border-radius: 50%;
+            font-weight: bold;
+            padding: 1rem;
+
+            transition: all .2s;
+        }
+
+        .repositorio a:hover {
+            background-color: #212529;
+            color: #fff;
+
+        }
+
+        .linkedin a:hover {
+            background-color: #fff;
+            color: #0077B5;
+
+        }
+
+        /* FIM RODAPÉ */
+
+
+
+        @media only screen and (max-width: 600px) {
+
+            html {
+                font-size: 55%;
+            }
+
+
+            .container {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            input,
+            select {
+                width: 100%;
+                text-align: center;
+            }
+
+            button {
+                width: 100%;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1> LISTA DE COMPRAS </h1>
+
+    <div class="container">
+
+        <input type="text" id="nomeProd" placeholder="Informe o nome do produto">
+
+        <select id="categoria">
+
+            <option value="escolher" disabled selected>Selecione a categoria:</option>
+            <option value="cereais">Cereais</option>
+            <option value="leguminosas">Leguminosas</option>
+            <option value="frutas">Frutas</option>
+            <option value="laticinios">Laticínios</option>
+            <option value="carnes">Carnes</option>
+
+        </select>
+
+        <button class="add" onclick="add()">ADICIONAR</button>
+        <button class="remove" onclick="remove()">EXCLUIR</button>
+
+
+
+    </div>
+
+
+    <div class="categoria-cereais">
+        <h3>Cereais</h3>
+        <ul id="cereais"></ul>
+        <hr>
+    </div>
+
+    <div class="categoria-leguminosas">
+        <h3>Leguminosas</h3>
+        <ul id="leguminosas"></ul>
+        <hr>
+    </div>
+    <div class="categoria-frutas">
+        <h3>Frutas</h3>
+        <ul id="frutas"></ul>
+        <hr>
+    </div>
+
+    <div class="categoria-laticinios">
+        <h3>Laticínios</h3>
+        <ul id="laticinios"></ul>
+        <hr>
+    </div>
+
+    <div class="categoria-carnes">
+        <h3>Carnes</h3>
+        <ul id="carnes"></ul>
+    </div>
+
+
+    <footer>
+        <!-- CONTATO -->
+
+        <section class="contato">
+
+            <div class="repositorio">
+
+                <a href="" target="_blank">
+
+                    <i class="ri-github-fill"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="linkedin">
+
+                <a href="https://www.linkedin.com/in/developergiovanesouza/" target="_blank">
+
+                    <i class="ri-linkedin-fill"></i>
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+        <p> &copy 2022 - Developer Giovane Souza. </p>
+
+
+    </footer>
+
+
+
+    <script src="versao2.js"></script>
+</body>
+
+</html>

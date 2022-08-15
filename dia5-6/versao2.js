@@ -49,67 +49,57 @@ let carnes = [];
 
 let nomeProd = "";
 let categoria = "";
-let removerProd = "";
-
-
-// PADRÃO PARA ENTRAR NO LOOP
-let perguntaInserir = "sim";
 
 
 function add() {
 
-    if (perguntaInserir == "sim") {
+    nomeProd = document.querySelector("#nomeProd").value;   
+    categoria = document.querySelector("#categoria").value;
 
-        nomeProd = prompt("Informe o nome do produto: ");
-        categoria = prompt(`Em qual categoria deseja inserir o produto (${nomeProd}): cereais, leguminosas, frutas, laticinios ou carnes`);
+    
+    switch (categoria) {
 
-        switch (categoria) {
+        case "cereais":
 
-            case "cereais":
+            cereais.push(nomeProd);
 
-                cereais.push(nomeProd);
+            renderCereais();
 
-                renderCereais();
+            break;
 
-                break;
+        case "leguminosas":
 
-            case "leguminosas":
+            leguminosas.push(nomeProd);
+            renderLeguminosas();
 
-                leguminosas.push(nomeProd);
-                renderLeguminosas();
+            break;
 
-                break;
+        case "frutas":
 
-            case "frutas":
+            frutas.push(nomeProd);
+            renderFrutas();
 
-                frutas.push(nomeProd);
-                renderFrutas();
+            break;
 
-                break;
+        case "laticinios":
 
-            case "laticinios":
+            laticinios.push(nomeProd);
+            renderLaticinios();
 
-                laticinios.push(nomeProd);
-                renderLaticinios();
+            break;
 
-                break;
+        case "carnes":
 
-            case "carnes":
+            carnes.push(nomeProd);
+            renderCarnes();
 
-                carnes.push(nomeProd);
-                renderCarnes();
+            break;
 
-                break;
+        default:
 
-            default:
+            alert(`Categoria inválida! O produto ${nomeProd} não foi adicionado à lista.`);
 
-                alert(`Categoria inválida! O produto ${nomeProd} não foi adicionado à lista.`);
-
-                break;
-
-        }
-
-
+            break;
 
     }
 
@@ -193,6 +183,7 @@ function mostrarLista() {
 
 
 
+
 // MOSTRA AS INSERÇÕES/ALTERAÇÕES DOS PRODUTOS NA TELA
 function renderCereais() {
     let ul = document.querySelector("#cereais");
@@ -273,52 +264,54 @@ function renderCarnes() {
 
 function remove() {
 
- 
-
+  
+    
     if (cereais.length === 0 && leguminosas.length === 0 && frutas.length === 0 && laticinios.length === 0 && carnes.length === 0) {
 
         alert(`A lista está vazia!`);
 
     } else {
 
-        removerProd = prompt(`Qual produto você deseja remover?`);
 
-        if (cereais.indexOf(removerProd) != -1) {
+       nomeProd = document.querySelector("#nomeProd").value;  
+       categoria = document.querySelector("#categoria").value;
 
-            cereais.splice(cereais.indexOf(removerProd), 1);
+        if (categoria == "cereais" && cereais.indexOf(nomeProd) != -1) {
+
+            cereais.splice(cereais.indexOf(nomeProd), 1);
 
             mostrarLista();
             renderCereais();
 
 
-        } else if (leguminosas.indexOf(removerProd) != -1) {
+        } else if (categoria == "leguminosas" && leguminosas.indexOf(nomeProd) != -1) {
 
-            leguminosas.splice(leguminosas.indexOf(removerProd), 1);
+            leguminosas.splice(leguminosas.indexOf(nomeProd), 1);
 
             mostrarLista();
             renderLeguminosas();
 
 
-        } else if (frutas.indexOf(removerProd) != -1) {
+        } else if (categoria == "frutas" && frutas.indexOf(nomeProd) != -1) {
 
-            frutas.splice(frutas.indexOf(removerProd), 1);
+            frutas.splice(frutas.indexOf(nomeProd), 1);
 
             mostrarLista();
             renderFrutas();
 
 
-        } else if (laticinios.indexOf(removerProd) != -1) {
+        } else if (categoria == "laticinios" && laticinios.indexOf(nomeProd) != -1) {
 
-            laticinios.splice(laticinios.indexOf(removerProd), 1);
+            laticinios.splice(laticinios.indexOf(nomeProd), 1);
 
             mostrarLista();
             renderLaticinios();
 
 
 
-        } else if (carnes.indexOf(removerProd) != -1) {
+        } else if (categoria == "carnes" && carnes.indexOf(nomeProd) != -1) {
 
-            carnes.splice(carnes.indexOf(removerProd), 1);
+            carnes.splice(carnes.indexOf(nomeProd), 1);
 
             mostrarLista();
             renderCarnes();
@@ -326,7 +319,7 @@ function remove() {
 
         } else {
 
-            alert(`Não foi possível encontrar o item dentro da lista!`);
+            alert(`Não foi possível encontrar o item dentro da lista!\n\nVerifique se o nome do produto e categoria foram selecionados corretamente!`);
 
         }
 
