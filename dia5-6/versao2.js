@@ -53,53 +53,58 @@ let categoria = "";
 
 function add() {
 
-    nomeProd = document.querySelector("#nomeProd").value;   
+    nomeProd = document.querySelector("#nomeProd").value;
     categoria = document.querySelector("#categoria").value;
 
-    
-    switch (categoria) {
+    if (nomeProd == "" || nomeProd == null && categoria == "escolher") {
+        alert("Digite o nome do produto e selecione a categoria para adicioná-lo à lista.")
+    } else {
 
-        case "cereais":
+        switch (categoria) {
 
-            cereais.push(nomeProd);
+            case "cereais":
 
-            renderCereais();
+                cereais.push(nomeProd);
 
-            break;
+                renderCereais();
 
-        case "leguminosas":
+                break;
 
-            leguminosas.push(nomeProd);
-            renderLeguminosas();
+            case "leguminosas":
 
-            break;
+                leguminosas.push(nomeProd);
+                renderLeguminosas();
 
-        case "frutas":
+                break;
 
-            frutas.push(nomeProd);
-            renderFrutas();
+            case "frutas":
 
-            break;
+                frutas.push(nomeProd);
+                renderFrutas();
 
-        case "laticinios":
+                break;
 
-            laticinios.push(nomeProd);
-            renderLaticinios();
+            case "laticinios":
 
-            break;
+                laticinios.push(nomeProd);
+                renderLaticinios();
 
-        case "carnes":
+                break;
 
-            carnes.push(nomeProd);
-            renderCarnes();
+            case "carnes":
 
-            break;
+                carnes.push(nomeProd);
+                renderCarnes();
 
-        default:
+                break;
 
-            alert(`Categoria inválida! O produto ${nomeProd} não foi adicionado à lista.`);
+            default:
 
-            break;
+                alert(`Categoria inválida! O produto ${nomeProd} não foi adicionado à lista.`);
+
+                break;
+
+        }
 
     }
 
@@ -264,8 +269,8 @@ function renderCarnes() {
 
 function remove() {
 
-  
-    
+
+
     if (cereais.length === 0 && leguminosas.length === 0 && frutas.length === 0 && laticinios.length === 0 && carnes.length === 0) {
 
         alert(`A lista está vazia!`);
@@ -273,8 +278,8 @@ function remove() {
     } else {
 
 
-       nomeProd = document.querySelector("#nomeProd").value;  
-       categoria = document.querySelector("#categoria").value;
+        nomeProd = document.querySelector("#nomeProd").value;
+        categoria = document.querySelector("#categoria").value;
 
         if (categoria == "cereais" && cereais.indexOf(nomeProd) != -1) {
 
@@ -324,7 +329,7 @@ function remove() {
         }
 
     }
-    
+
 
 
 
