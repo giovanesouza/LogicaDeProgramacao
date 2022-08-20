@@ -17,33 +17,74 @@
 </head>
 
 <body>
-
-
+    
     <div class="container">
 
-        <div id="resultado">0</div>
+        <input id="resultado" />
 
         <div class="grid">
-            <button class="item teclaMais">+</button>
-            <button class="item tecla-">-</button>
-            <button class="item teclaX">x</button>
-            <button class="item tecla/">/</button>
-            <button class="item tecla9">9</button>
-            <button class="item tecla8">8</button>
-            <button class="item tecla7">7</button>
-            <button class="item tecla6">6</button>
-            <button class="item tecla5">5</button>
-            <button class="item tecla4">4</button>
-            <button class="item tecla3">3</button>
-            <button class="item tecla2">2</button>
-            <button class="item tecla1">1</button>
-            <button class="item tecla0">0</button>
-            <button class="item tecla.">.</button>
-            <button class="item teclac">C</button>
-            <button class="item teclaIgual">=</button>
 
+            <input type="button" value="+" class="item teclaMais" onclick="digito('+')" />
+            <input type="button" class="item tecla-" value="-" onclick="digito('-')" />
+            <input type="button" class="item teclaX" value="x" onclick="digito('*')" />
+            <input type="button" class="item tecla/" value="÷" onclick="digito('/')" />
+
+            <input type="button" class="item tecla9" value="9" onclick="digito('9')" />
+            <input type="button" class="item tecla8" value="8" onclick="digito('8')" />
+            <input type="button" class="item tecla7" value="7" onclick="digito('7')" />
+            <input type="button" class="item tecla6" value="6" onclick="digito('6')" />
+            <input type="button" class="item tecla5" value="5" onclick="digito('5')" />
+            <input type="button" class="item tecla4" value="4" onclick="digito('4')" />
+            <input type="button" class="item tecla3" value="3" onclick="digito('3')" />
+            <input type="button" class="item tecla2" value="2" onclick="digito('2')" />
+            <input type="button" class="item tecla1" value="1" onclick="digito('1')" />
+            <input type="button" class="item tecla0" value="0" onclick="digito('0')" />
+            <input type="button" class="item tecla." value="." onclick="digito('.')" />
+            <input type="button" class="item teclac" value="Limpar" onclick="limpar()" />
+            <input type="button" class="item teclaIgual" value="=" onclick="calcular()" />
 
         </div>
+
+
+        <table>
+            <tr>
+                <th>OPERAÇÕES POSSÍVEIS</th>
+                <th class="simbolo">SÍMBOLO</th>
+                <th class="exemplo">EXEMPLO</th>
+            </tr>
+
+            <tr>
+                <td>Adição</td>
+                <td class="simbolo">+</td>
+                <td class="exemplo">5 + 5</td>
+            </tr>
+
+            <tr>
+                <td>Subtração</td>
+                <td class="simbolo">-</td>
+                <td class="exemplo">5 - 5</td>
+            </tr>
+
+            <tr>
+                <td>Multiplicacão</td>
+                <td class="simbolo">x</td>
+                <td class="exemplo">5 x 5</td>
+            </tr>
+
+            <tr>
+                <td>Divisão</td>
+                <td class="simbolo">÷</td>
+                <td class="exemplo">5 ÷ 5</td>
+            </tr>
+
+
+            <tr>
+                <td>Potenciação</td>
+                <td class="simbolo"> xx </td>
+                <td class="exemplo"> 5 xx 5 </td>
+            </tr>
+        </table>
+
 
     </div>
 
@@ -56,7 +97,7 @@
 
             <div class="repositorio">
 
-                <a href="" target="_blank">
+                <a href="https://github.com/giovanesouza/LogicaDeProgramacao" target="_blank">
 
                     <i class="ri-github-fill"></i>
 
